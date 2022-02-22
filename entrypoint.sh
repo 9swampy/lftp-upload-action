@@ -43,3 +43,5 @@ lftp $URI << TRANSFER
 
     mirror --verbose --reverse $ARGS $INPUT_LOCAL_PATH $INPUT_REMOTE_PATH
 TRANSFER
+
+echo "Exit $?"
