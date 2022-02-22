@@ -18,20 +18,21 @@ fi
 #REMOTE_PATH
 #LOCAL_PATH
 
+echo "Debug params"
 URI="sftp://home416919653.1and1-data.host:22"
+echo "Uri=${URI}"
 INPUT_USERNAME="u69050957-BlazorWeb"
+echo "UserName=${INPUT_USERNAME}"
 INPUT_LOCAL_PATH="/home/runner/work/AzureWebsiteCore/AzureWebsiteCore/BlazorWeb/Api/"
+echo "Local=${INPUT_LOCAL_PATH}"
 INPUT_REMOTE_PATH="/"
+echo "Remote=${INPUT_REMOTE_PATH}"
 INPUT_SSL_VERIFY_CERT=$false
+echo "INPUT_SSL_VERIFY_CERT=${INPUT_SSL_VERIFY_CERT}"
 INPUT_SSL_FORCE=$true
+echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
 
 ARGS="${INPUT_MIRROR_ARGS}"
-echo "Uri=${URI}"
-echo "UserName=${INPUT_USERNAME}"
-echo "Local=${INPUT_LOCAL_PATH}"
-echo "Remote=${INPUT_REMOTE_PATH}"
-echo "INPUT_SSL_VERIFY_CERT=${INPUT_SSL_VERIFY_CERT}"
-echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
 echo "ARGS=${ARGS}"
 
 #--reverse sends file to the server from the LOCAL_PATH
