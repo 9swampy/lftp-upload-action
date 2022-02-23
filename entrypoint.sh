@@ -21,7 +21,7 @@ fi
 echo "Debug params"
 echo "Uri=${URI}"
 echo "UserName=${INPUT_USERNAME}"
-echo "Local=${INPUT_LOCAL_PATH}"
+echo "Local=${INPUT_LFTP_LOCAL_PATH}"
 echo "Remote=${INPUT_REMOTE_PATH}"
 echo "INPUT_SSL_VERIFY_CERT=${INPUT_SSL_VERIFY_CERT}"
 echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
@@ -36,7 +36,7 @@ lftp $URI << TRANSFER
     set ftp:ssl-force ${INPUT_SSL_FORCE}
     user $INPUT_USERNAME $INPUT_PASSWORD
 
-    mirror --verbose --reverse $ARGS $INPUT_LOCAL_PATH $INPUT_REMOTE_PATH
+    mirror --verbose --reverse $ARGS $INPUT_LFTP_LOCAL_PATH $INPUT_REMOTE_PATH
 TRANSFER
 
 echo "Exit $?"

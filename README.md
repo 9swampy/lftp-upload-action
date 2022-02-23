@@ -5,15 +5,15 @@ This action is set up to perform FTPs (SSL/TLS over FTP) that some sites require
 ## Inputs
 
 ### `host`
-The host name of the server you want to connect to.
+The host name of the server you want to connect to. Use the protocol parameter to prefix the hostname, port to suffix the port.
 
 ### `port` (optional)
-The port you want to connect to. Specify if its not on a protocol standard.
+The port you want to connect to; e.g. 21 for ftp, 22 for sftp. Specify if its not on a protocol standard.
 
 ### `protocol` (optional)
-The protocol to connect with (default: ftp)
+The protocol to connect with (e.g. ftp/ftps/sftp default: ftp)
 
-### `password`
+### `username`
 The username to authenticate with.
 
 ### `password`
@@ -31,7 +31,7 @@ Cipher priority string to pass to gnutls (default: ""). In some strange cases, y
 ### `mirror_args` (optional)
 Any additional arguments to pass to the mirror command (default: "")
 
-### `local_path`
+### `lftp_local_path`
 the local path to upload from the deployment repo
 
 ### `remote_path`

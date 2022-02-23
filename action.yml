@@ -26,7 +26,7 @@ inputs:
     default: ""
   mirror_args:
     description: "Additional arguments to pass to LFTP mirror command"
-  local_path:
+  lftp_local_path:
     description: "the local path to upload from the deployment repo"
     required: true
   remote_path:
