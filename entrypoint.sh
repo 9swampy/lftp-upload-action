@@ -19,6 +19,8 @@ URI="${INPUT_PROTOCOL:=ftp}"'://'"${INPUT_HOST}"
 #REMOTE_PATH
 #LOCAL_PATH
 
+INPUT_LOCAL_PATH="/github/workspace/BlazorWeb/Api/"
+
 echo "Debug params"
 echo "Uri=${URI}"
 echo "INPUT_PORT=${INPUT_PORT}"
@@ -38,9 +40,9 @@ ls ${INPUT_LOCAL_PATH}
 lftp $URI << TRANSFER    
     set ssl:verify-certificate ${INPUT_SSL_VERIFY_CERT}
     set ftp:ssl-force ${INPUT_SSL_FORCE}
-    user $INPUT_USERNAME $INPUT_PASSWORD
-
-    mirror --verbose --reverse $ARGS $INPUT_LOCAL_PATH $INPUT_REMOTE_PATH
+    user ${INPUT_USERNAME} ${INPUT_PASSWORD}
+    ls ${INPUT_REMOTE_PATH}
+    mirror --verbose --reverse $ARGS ${INPUT_LOCAL_PATH} ${INPUT_REMOTE_PATH}
     exit
 TRANSFER
 
