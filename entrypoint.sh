@@ -9,7 +9,8 @@ INPUT_SSL_FORCE=${INPUT_SSL_FORCE:-false}
 URI="${INPUT_PROTOCOL:=ftp}"'://'"${INPUT_HOST}"
 
 if [ ! -n $INPUT_PORT ]; then
-    URI=$URI:$INPUT_PORT
+    echo "Suffix port..."
+    URI="${URI}:${INPUT_PORT}"
 fi
 
 #USERNAME
@@ -20,8 +21,9 @@ fi
 
 echo "Debug params"
 echo "Uri=${URI}"
+echo "INPUT_PORT=${INPUT_PORT}"
 echo "UserName=${INPUT_USERNAME}"
-echo "Local=${INPUT_LFTP_LOCAL_PATH}"
+echo "Local=${INPUT_LOCAL_PATH}"
 echo "Remote=${INPUT_REMOTE_PATH}"
 echo "INPUT_SSL_VERIFY_CERT=${INPUT_SSL_VERIFY_CERT}"
 echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
@@ -29,7 +31,7 @@ echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
 ARGS="${INPUT_MIRROR_ARGS}"
 echo "ARGS=${ARGS}"
 
-ls ${INPUT_LFTP_LOCAL_PATH}
+ls ${INPUT_LOCAL_PATH}
 
 #--reverse sends file to the server from the LOCAL_PATH
 #set ssl:priority ${INPUT_SSL_PRIORITY}
@@ -38,7 +40,7 @@ lftp $URI << TRANSFER
     set ftp:ssl-force ${INPUT_SSL_FORCE}
     user $INPUT_USERNAME $INPUT_PASSWORD
 
-    mirror --verbose --reverse $ARGS $INPUT_LFTP_LOCAL_PATH $INPUT_REMOTE_PATH
+    mirror --verbose --reverse $ARGS $INPUT_LOCAL_PATH $INPUT_REMOTE_PATH
     exit
 TRANSFER
 
