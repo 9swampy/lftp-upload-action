@@ -29,6 +29,8 @@ echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
 ARGS="${INPUT_MIRROR_ARGS}"
 echo "ARGS=${ARGS}"
 
+ls ${INPUT_LFTP_LOCAL_PATH}
+
 #--reverse sends file to the server from the LOCAL_PATH
 #set ssl:priority ${INPUT_SSL_PRIORITY}
 lftp $URI << TRANSFER    
@@ -37,6 +39,7 @@ lftp $URI << TRANSFER
     user $INPUT_USERNAME $INPUT_PASSWORD
 
     mirror --verbose --reverse $ARGS $INPUT_LFTP_LOCAL_PATH $INPUT_REMOTE_PATH
+    exit
 TRANSFER
 
 echo "Exit $?"
