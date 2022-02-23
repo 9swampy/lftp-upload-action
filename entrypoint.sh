@@ -8,10 +8,10 @@ INPUT_SSL_FORCE=${INPUT_SSL_FORCE:-false}
 
 URI="${INPUT_PROTOCOL:=ftp}"'://'"${INPUT_HOST}"
 
-if [ ! -n "${INPUT_PORT}" ]; then
-    echo "Suffix port..."
+#if [ ! -n "${INPUT_PORT}" ]; then
+    echo "Forced Suffix port..."
     URI="${URI}:${INPUT_PORT}"
-fi
+#fi
 
 #USERNAME
 #PASSWORD
