@@ -35,6 +35,9 @@ echo "INPUT_SSL_FORCE=${INPUT_SSL_FORCE}"
 ARGS="${INPUT_MIRROR_ARGS}"
 echo "ARGS=${ARGS}"
 
+ping 8.8.8.8 -c 2
+ping home416919653.1and1-data.host -c 2
+
 ls ${INPUT_LOCAL_PATH}
 
 cat > /tmp/lftp.commands <<EOF
