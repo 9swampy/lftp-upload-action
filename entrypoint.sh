@@ -19,7 +19,9 @@ URI="${INPUT_PROTOCOL:=ftp}"'://'"${INPUT_HOST}"
 #REMOTE_PATH
 #LOCAL_PATH
 
-INPUT_LOCAL_PATH="/github/workspace/BlazorWeb/Api/"
+INPUT_LOCAL_PATH="/github/workspace/BlazorWeb/Api/" #Hangs, does exist, has content.
+INPUT_LOCAL_PATH="/home/runner/work/AzureWebsiteCore/AzureWebsiteCore/BlazorWeb/Api/" #throws as local doesn't exist.
+INPUT_LOCAL_PATH="/github/workspace/BlazorWeb/xApi/" #Should throw, won't exist
 
 echo "Debug params"
 echo "Uri=${URI}"
@@ -34,6 +36,16 @@ ARGS="${INPUT_MIRROR_ARGS}"
 echo "ARGS=${ARGS}"
 
 ls ${INPUT_LOCAL_PATH}
+
+cat > /tmp/lftp.commands <<EOF
+set ssl:priority true
+set ssl:verify-certificate true
+set ftp:ssl-force true
+user u69050957-BlazorWeb ${INPUT_PASSWORD}
+ls
+EOF
+
+lftp sftp://home416919653.1and1-data.host:22 < /tmp/lftp.commands
 
 #--reverse sends file to the server from the LOCAL_PATH
 #set ssl:priority ${INPUT_SSL_PRIORITY}
