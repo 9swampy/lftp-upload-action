@@ -37,6 +37,7 @@ echo "ARGS=${ARGS}"
 
 ping 8.8.8.8 -c 2
 ping home416919653.1and1-data.host -c 2
+ping longmead.prims.com -c 2
 
 cat > /tmp/lftp.commands <<EOF
 set ssl:priority true
@@ -48,6 +49,7 @@ EOF
 
 cat /tmp/lftp.commands
 
+lftp sftp://longmead.prims.com:22 < /tmp/lftp.commands
 lftp sftp://home416919653.1and1-data.host:22 < /tmp/lftp.commands
 
 ls ${INPUT_LOCAL_PATH}
