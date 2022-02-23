@@ -31,7 +31,7 @@ Cipher priority string to pass to gnutls (default: ""). In some strange cases, y
 ### `mirror_args` (optional)
 Any additional arguments to pass to the mirror command (default: "")
 
-### `lftp_local_path`
+### `local_path`
 the local path to upload from the deployment repo
 
 ### `remote_path`

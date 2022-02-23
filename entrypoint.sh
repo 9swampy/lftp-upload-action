@@ -38,8 +38,6 @@ echo "ARGS=${ARGS}"
 ping 8.8.8.8 -c 2
 ping home416919653.1and1-data.host -c 2
 
-ls ${INPUT_LOCAL_PATH}
-
 cat > /tmp/lftp.commands <<EOF
 set ssl:priority true
 set ssl:verify-certificate true
@@ -48,7 +46,11 @@ user u69050957-BlazorWeb ${INPUT_PASSWORD}
 ls
 EOF
 
+cat /tmp/lftp.commands
+
 lftp sftp://home416919653.1and1-data.host:22 < /tmp/lftp.commands
+
+ls ${INPUT_LOCAL_PATH}
 
 #--reverse sends file to the server from the LOCAL_PATH
 #set ssl:priority ${INPUT_SSL_PRIORITY}
